@@ -1,0 +1,13 @@
+branch-defaults:
+  master:
+    environment: simple-environment
+    group_suffix: null
+global:
+  application_name: first-messenger-bot
+  branch: null
+  default_ec2_keyname: wordpresskp
+  default_platform: Node.js
+  default_region: us-east-1
+  profile: null
+  repository: null
+  sc: git
