@@ -1,7 +1,7 @@
 var facebookAPI = require('./facebookAPI');
 var config = require('config');
 
-const SERVER_URL = config.get('validationToken');
+const SERVER_URL = config.get('serverURL');
 
 module.exports = {
     sendGenericMessage: function(recipientId) {
