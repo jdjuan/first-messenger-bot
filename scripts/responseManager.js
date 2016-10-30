@@ -147,7 +147,7 @@ module.exports = {
             sender_action: "typing_off"
         };
 
-        callSendAPI(messageData);
+        facebookAPI.callSendAPI(messageData);
     },
     sendTextMessage: function(recipientId, messageText) {
         var messageData = {
