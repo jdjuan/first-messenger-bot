@@ -58,7 +58,8 @@ module.exports = {
                 attachment: {
                     type: "image",
                     payload: {
-                        url: SERVER_URL + "/assets/rift.png"
+                        url: "https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/14317505_1068024023305558_7246467951144412226_n.jpg?oh=e27e7e5a5235050ba6abae1f94a5ab1c&oe=58953F30&__gda__=1486794336_1105aa33b7bf01af8ec5cf746564cd41"
+                        // url: SERVER_URL + "/assets/rift.png"
                     }
                 }
             }
