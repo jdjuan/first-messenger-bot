@@ -46,13 +46,13 @@ module.exports = {
                     responseManager.sendReceiptMessage(senderID);
                     break;
                 case 'quick reply':
-                    sendQuickReply(senderID);
+                    responseManager.sendQuickReply(senderID);
                     break;
                 case 'typing on':
-                    sendTypingOn(senderID);
+                    responseManager.sendTypingOn(senderID);
                     break;
                 case 'typing off':
-                    sendTypingOff(senderID);
+                    responseManager.sendTypingOff(senderID);
                     break;
                 default:
                     responseManager.sendTextMessage(senderID, messageText);
