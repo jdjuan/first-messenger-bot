@@ -23,7 +23,7 @@ module.exports = {
             console.log("Quick reply for message %s with payload %s",
                 messageId, quickReplyPayload);
 
-            sendTextMessage(senderID, "Quick reply tapped");
+            responseManager.sendTextMessage(senderID, "Quick reply tapped");
             return;
         }
 
