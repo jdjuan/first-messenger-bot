@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var request = require('request');
 var eventManager = require('./scripts/eventManager');
 var app = express();
 
