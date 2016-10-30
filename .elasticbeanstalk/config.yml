@@ -1,4 +1,6 @@
 branch-defaults:
+  juan-herrera-bot:
+    environment: simple-environment
   master:
     environment: simple-environment
     group_suffix: null

@@ -44,9 +44,6 @@ module.exports = {
                     payload: {
                         template_type: "generic",
                         elements: [{
-                            title: "2 Años",
-                            image_url: SERVER_URL + "/pics/002.jpg"
-                        }, {
                             title: "3 Años",
                             image_url: SERVER_URL + "/pics/003.jpg"
                         }, {
@@ -59,26 +56,11 @@ module.exports = {
                             title: "7 Años",
                             image_url: SERVER_URL + "/pics/007.jpg"
                         }, {
-                            title: "8 Años",
-                            image_url: SERVER_URL + "/pics/008.jpg"
-                        }, {
                             title: "9 Años",
                             image_url: SERVER_URL + "/pics/009.jpg"
                         }, {
-                            title: "13 Años",
-                            image_url: SERVER_URL + "/pics/013.jpg"
-                        }, {
-                            title: "14 Años",
-                            image_url: SERVER_URL + "/pics/014.jpg"
-                        }, {
-                            title: "15 Años",
-                            image_url: SERVER_URL + "/pics/015.jpg"
-                        }, {
                             title: "16 Años",
                             image_url: SERVER_URL + "/pics/016.jpg"
-                        }, {
-                            title: "17 Años",
-                            image_url: SERVER_URL + "/pics/017.jpg"
                         }, {
                             title: "18 Años",
                             image_url: SERVER_URL + "/pics/018.jpg"
@@ -86,17 +68,8 @@ module.exports = {
                             title: "19 Años",
                             image_url: SERVER_URL + "/pics/019.jpg"
                         }, {
-                            title: "20 Años",
-                            image_url: SERVER_URL + "/pics/020.jpg"
-                        }, {
-                            title: "21 Años",
-                            image_url: SERVER_URL + "/pics/021.jpg"
-                        }, {
                             title: "22 Años",
                             image_url: SERVER_URL + "/pics/022.jpg"
-                        }, {
-                            title: "22 Años y medio",
-                            image_url: SERVER_URL + "/pics/022-.jpg"
                         }, {
                             title: "23 Años",
                             image_url: SERVER_URL + "/pics/023.jpg"
