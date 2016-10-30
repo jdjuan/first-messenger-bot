@@ -1,5 +1,5 @@
 var request = require('request');
-var config = require('./config');
+var config = require('config');
 
 // Generate a page access token for your page from the App Dashboard
 const PAGE_ACCESS_TOKEN = config.get('pageAccessToken');
