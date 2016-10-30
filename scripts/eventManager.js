@@ -36,19 +36,24 @@ module.exports = {
                 case 'image':
                     responseManager.sendImageMessage(senderID);
                     break;
-
                 case 'button':
                     responseManager.sendButtonMessage(senderID);
                     break;
-
                 case 'generic':
                     responseManager.sendGenericMessage(senderID);
                     break;
-
                 case 'receipt':
                     responseManager.sendReceiptMessage(senderID);
                     break;
-
+                case 'quick reply':
+                    sendQuickReply(senderID);
+                    break;
+                case 'typing on':
+                    sendTypingOn(senderID);
+                    break;
+                case 'typing off':
+                    sendTypingOff(senderID);
+                    break;
                 default:
                     responseManager.sendTextMessage(senderID, messageText);
             }
