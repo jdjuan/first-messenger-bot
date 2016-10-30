@@ -1,10 +1,14 @@
 var request = require('request');
+var config = require('./config');
+
+// Generate a page access token for your page from the App Dashboard
+const PAGE_ACCESS_TOKEN = config.get('pageAccessToken');
 
 module.exports = {
     callSendAPI: function(messageData) {
         request({
             uri: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: { access_token: 'EAATkqZAevZApABABsvFskCImcnynuE4NG73ZCAeuQOcCydwXBqbflkqasMj0perZBEaUycyI2lwffYbGYEJxmY1x5RpX3S8drjJl1j8KQUp4mc5lFfNNqTG8xvsLrlT6sFYJ62dg950SqZCUvnxZBHP3FonqpeZB1eG65CYZCo9CpgZDZD' },
+            qs: { access_token: PAGE_ACCESS_TOKEN },
             method: 'POST',
             json: messageData
         }, function(error, response, body) {
