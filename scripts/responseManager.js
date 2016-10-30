@@ -47,7 +47,7 @@ module.exports = {
                 }
             }
         };
-        callSendAPI.callSendAPI(messageData);
+        facebookAPI.callSendAPI(messageData);
     },
     sendImageMessage: function(recipientId) {
         var messageData = {
@@ -64,7 +64,7 @@ module.exports = {
             }
         };
 
-        callSendAPI(messageData);
+        facebookAPI.callSendAPI(messageData);
     },
     sendTextMessage: function(recipientId, messageText) {
         var messageData = {
