@@ -1,4 +1,7 @@
 var facebookAPI = require('./facebookAPI');
+var config = require('config');
+
+const SERVER_URL = config.get('validationToken');
 
 module.exports = {
     sendGenericMessage: function(recipientId) {
@@ -45,6 +48,23 @@ module.exports = {
             }
         };
         callSendAPI.callSendAPI(messageData);
+    },
+    sendImageMessage: function(recipientId) {
+        var messageData = {
+            recipient: {
+                id: recipientId
+            },
+            message: {
+                attachment: {
+                    type: "image",
+                    payload: {
+                        url: SERVER_URL + "/assets/rift.png"
+                    }
+                }
+            }
+        };
+
+        callSendAPI(messageData);
     },
     sendTextMessage: function(recipientId, messageText) {
         var messageData = {
