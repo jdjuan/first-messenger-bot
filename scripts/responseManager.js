@@ -1,3 +1,5 @@
+var facebookAPI = require('./facebookAPI');
+
 module.exports = {
     sendGenericMessage: function(recipientId) {
         var messageData = {
