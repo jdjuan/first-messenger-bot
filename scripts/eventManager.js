@@ -69,17 +69,15 @@ module.exports = {
             "at %d", senderID, recipientID, payload, timeOfPostback);
         // The 'payload' param is a developer-defined field which is set in a postback 
         // button for Structured Messages. 
-
         var payload = event.postback.payload;
-        switch (payload) {
-            case 'ver-fotos':
-                responseManager.sendTextMessage(senderID, "Ver fotos");
-                responseManager.sendPhotos(senderID);
-                break;
-            default:
-                responseManager.sendTextMessage(senderID, "Payload not received");
-                break;
+        this.payloadManager(senderID, payload);
+    },
+    payloadManager: function(senderID, payload) {
+        var numbers = payload.match(/\d+\.\d+|\d+\b|\d+(?=\w)/g) || [];
+        numbers = numbers.map(function (v) {return +v;})
+        var firstOcurrence = numbers.shift();
+        if (firstOcurrence) {
+            responseManager.sendPhotos(senderID, firstOcurrence);
         }
-
     }
 }
