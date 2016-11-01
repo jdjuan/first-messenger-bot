@@ -45,7 +45,7 @@ module.exports = {
                 }
             }
         };
-        facebookAPI.sendGenericMessage(recipientId, messageData);
+        facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
     },
     sendPhoto: function(recipientId) {
         var photo = photos[Math.floor(Math.random() * photos.length)];
