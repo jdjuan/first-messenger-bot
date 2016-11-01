@@ -58,8 +58,8 @@ module.exports = {
         var photo = photos[Math.floor(Math.random() * photos.length)];
         var url = SERVER_URL + '/pics/' + photo.url;
         var message = photo.message;
-        sendImageMessage(recipientId, url);
-        sendTextMessage(recipientId, message);
+        this.sendImageMessage(recipientId, url);
+        this.sendTextMessage(recipientId, message);
         
     },
     sendGenericMessage: function(recipientId) {

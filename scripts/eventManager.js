@@ -62,11 +62,11 @@ module.exports = {
         var senderID = event.sender.id;
         var recipientID = event.recipient.id;
         var timeOfPostback = event.timestamp;
+        var payload = event.postback.payload;
         console.log("Received postback for user %d and page %d with payload '%s' " +
             "at %d", senderID, recipientID, payload, timeOfPostback);
         // The 'payload' param is a developer-defined field which is set in a postback 
         // button for Structured Messages. 
-        var payload = event.postback.payload;
         this.payloadManager(senderID, payload);
     },
     payloadManager: function(senderID, payload) {
