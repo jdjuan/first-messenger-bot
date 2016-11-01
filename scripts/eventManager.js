@@ -37,8 +37,15 @@ module.exports = {
         this.payloadManager(senderID, payload);
     },
     payloadManager: function(senderID, payload) {
-        if (payload === 'ver-fotos') {
-            responseManager.sendPhoto(senderID);
+        switch (payload) {
+            case 'ver-fotos':
+                responseManager.sendPhoto(senderID);
+                break;
+            case 'volver':
+                responseManager.sendBackButton(senderID);
+                break;
+            default:
+                break;
         }
     }
 }
