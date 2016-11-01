@@ -1,11 +1,32 @@
 var facebookAPI = require('./facebookAPI');
 var config = require('config');
+var photos = [{ url: '002.jpg', message: "2 años" },
+    { url: '003.jpg', message: "3 años" },
+    { url: '005.jpg', message: "5 años" },
+    { url: '006.jpg', message: "6 años" },
+    { url: '007.jpg', message: "7 años" },
+    { url: '008.jpg', message: "8 años" },
+    { url: '009.jpg', message: "9 años" },
+    { url: '013.jpg', message: "13 años" },
+    { url: '014.jpg', message: "14 años" },
+    { url: '015.jpg', message: "15 años" },
+    { url: '016.jpg', message: "16 años" },
+    { url: '017.jpg', message: "17 años" },
+    { url: '018.jpg', message: "18 años" },
+    { url: '019.jpg', message: "19 años" },
+    { url: '020.jpg', message: "20 años" },
+    { url: '021.jpg', message: "21 años" },
+    { url: '022.jpg', message: "22 años" },
+    { url: '022-2.jpg', message: "22 años" },
+    { url: '023.jpg', message: "23 años" }
+];
+
 
 const SERVER_URL = config.get('serverURL');
 
 module.exports = {
     sendMainMenu: function(recipientId) {
-         var messageData = {
+        var messageData = {
             recipient: {
                 id: recipientId
             },
@@ -33,52 +54,13 @@ module.exports = {
         };
         facebookAPI.callSendAPI(messageData);
     },
-    sendPhotos: function(recipientId) {
-         var messageData = {
-            recipient: {
-                id: recipientId
-            },
-            message: {
-                attachment: {
-                    type: "template",
-                    payload: {
-                        template_type: "generic",
-                        elements: [{
-                            title: "3 Años",
-                            image_url: SERVER_URL + "/pics/003.jpg"
-                        }, {
-                            title: "5 Años",
-                            image_url: SERVER_URL + "/pics/005.jpg"
-                        }, {
-                            title: "6 Años",
-                            image_url: SERVER_URL + "/pics/006.jpg"
-                        }, {
-                            title: "7 Años",
-                            image_url: SERVER_URL + "/pics/007.jpg"
-                        }, {
-                            title: "9 Años",
-                            image_url: SERVER_URL + "/pics/009.jpg"
-                        }, {
-                            title: "16 Años",
-                            image_url: SERVER_URL + "/pics/016.jpg"
-                        }, {
-                            title: "18 Años",
-                            image_url: SERVER_URL + "/pics/018.jpg"
-                        }, {
-                            title: "19 Años",
-                            image_url: SERVER_URL + "/pics/019.jpg"
-                        }, {
-                            title: "22 Años",
-                            image_url: SERVER_URL + "/pics/022.jpg"
-                        }, {
-                            title: "23 Años",
-                            image_url: SERVER_URL + "/pics/023.jpg"
-                        }]
-                    }
-                }
-            }
-        };
-        facebookAPI.callSendAPI(messageData);
+    sendPhoto: function(recipientId) {
+        var photo = photos[Math.floor(Math.random() * photos.length)];
+        var url = SERVER_URL + '/pics/' + photo.url;
+        var message = photo.message;
+        sendImageMessage(recipientId, url);
+        sendTextMessage(recipientId, message);
+        
     },
     sendGenericMessage: function(recipientId) {
         var messageData = {
@@ -125,7 +107,7 @@ module.exports = {
         };
         facebookAPI.callSendAPI(messageData);
     },
-    sendImageMessage: function(recipientId) {
+    sendImageMessage: function(recipientId, imageURL) {
         var messageData = {
             recipient: {
                 id: recipientId
@@ -134,8 +116,7 @@ module.exports = {
                 attachment: {
                     type: "image",
                     payload: {
-                        url: "https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/14317505_1068024023305558_7246467951144412226_n.jpg?oh=e27e7e5a5235050ba6abae1f94a5ab1c&oe=58953F30&__gda__=1486794336_1105aa33b7bf01af8ec5cf746564cd41"
-                        // url: SERVER_URL + "/assets/rift.png"
+                        url: imageURL
                     }
                 }
             }
@@ -226,13 +207,13 @@ module.exports = {
 
         facebookAPI.callSendAPI(messageData);
     },
-    sendTextMessage: function(recipientId, messageText) {
+    sendTextMessage: function(recipientId, message) {
         var messageData = {
             recipient: {
                 id: recipientId
             },
             message: {
-                text: messageText
+                text: message
             }
         };
 

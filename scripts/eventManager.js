@@ -33,9 +33,6 @@ module.exports = {
             // keywords and send back the corresponding example. Otherwise, just echo
             // the text we received.
             switch (messageText) {
-                case 'image':
-                    responseManager.sendImageMessage(senderID);
-                    break;
                 case 'button':
                     responseManager.sendButtonMessage(senderID);
                     break;
@@ -73,11 +70,8 @@ module.exports = {
         this.payloadManager(senderID, payload);
     },
     payloadManager: function(senderID, payload) {
-        var numbers = payload.match(/\d+\.\d+|\d+\b|\d+(?=\w)/g) || [];
-        numbers = numbers.map(function (v) {return +v;})
-        var firstOcurrence = numbers.shift();
-        if (firstOcurrence) {
-            responseManager.sendPhotos(senderID, firstOcurrence);
+        if (payload === 'ver-fotos') {
+            responseManager.sendPhoto(senderID);
         }
     }
 }
