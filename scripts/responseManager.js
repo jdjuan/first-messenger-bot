@@ -64,6 +64,7 @@ module.exports = {
             type: "template",
             payload: {
                 template_type: "button",
+                text: "¿Deseas volver?",
                 buttons: [{
                     type: "postback",
                     title: "Volver",
