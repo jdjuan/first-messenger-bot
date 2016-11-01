@@ -26,23 +26,21 @@ const SERVER_URL = config.get('serverURL');
 module.exports = {
     sendMainMenu: function(recipientId) {
         var attachmentMessage = {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "generic",
-                    elements: [{
-                        title: "¡Hola!, escoge una opción:",
-                        buttons: [{
-                            type: "postback",
-                            title: "Ver fotos",
-                            payload: "ver-fotos",
-                        }, {
-                            type: "web_url",
-                            url: "http://www.juandavidherrera.com/",
-                            title: "Ver página web"
-                        }],
-                    }]
-                }
+            type: "template",
+            payload: {
+                template_type: "generic",
+                elements: [{
+                    title: "¡Hola!, escoge una opción:",
+                    buttons: [{
+                        type: "postback",
+                        title: "Ver fotos",
+                        payload: "ver-fotos",
+                    }, {
+                        type: "web_url",
+                        url: "http://www.juandavidherrera.com/",
+                        title: "Ver página web"
+                    }],
+                }]
             }
         };
         facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
