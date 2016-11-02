@@ -58,7 +58,7 @@ module.exports = {
         facebookAPI.sendTypingOff(recipientId);
         setTimeout(function() { 
             this.sendBackButton(recipientId); 
-        }, 3000);
+        }.bind(this), 3000);
     },
     sendBackButton: function(recipientId) {
         facebookAPI.sendTypingOn(recipientId);
