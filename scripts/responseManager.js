@@ -7,7 +7,6 @@ const SERVER_URL = config.get('serverURL');
 
 module.exports = {
     sendMainMenu: function(recipientId) {
-        facebookAPI.sendTypingOn(recipientId);
         var attachmentMessage = {
             type: "template",
             payload: {
@@ -27,30 +26,34 @@ module.exports = {
             }
         };
         facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
-        facebookAPI.sendTypingOff(recipientId);
+    },
+    sendSong: function(recipientId) {
+        var song = music[Math.floor(Math.random() * music.length)];
+        var url = SERVER_URL + '/pics/' + song.url;
+        facebookAPI.sendTextMessage(recipientId, url);
+        // setTimeout(function() { 
+        //     this.sendBackButton(recipientId); 
+        // }.bind(this), 3000);
     },
     sendPhoto: function(recipientId) {
-        facebookAPI.sendTypingOn(recipientId);
         var photo = photos[Math.floor(Math.random() * photos.length)];
         var url = SERVER_URL + '/pics/' + photo.url;
         var message = photo.message;
         facebookAPI.sendTextMessage(recipientId, message);
         facebookAPI.sendImageMessage(recipientId, url);
-        facebookAPI.sendTypingOff(recipientId);
         setTimeout(function() { 
             this.sendBackButton(recipientId); 
         }.bind(this), 3000);
     },
     sendBackButton: function(recipientId) {
-        facebookAPI.sendTypingOn(recipientId);
         var attachmentMessage = {
             type: "template",
             payload: {
                 template_type: "button",
-                text: "¿Deseas volver?",
+                text: "Escoge una opción:",
                 buttons: [{
                     type: "postback",
-                    title: "Quiero ver otra",
+                    title: "Ver otra foto",
                     payload: "ver-otra-foto"
                 }, {
                     type: "postback",
@@ -60,6 +63,5 @@ module.exports = {
             }
         };
         facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
-        facebookAPI.sendTypingOff(recipientId);
     },
 }

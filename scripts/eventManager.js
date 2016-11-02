@@ -41,6 +41,9 @@ module.exports = {
             case 'ver-fotos':
                 responseManager.sendPhoto(senderID);
                 break;
+            case 'ver-otra-foto':
+                responseManager.sendPhoto(senderID);
+                break;
             case 'volver':
                 responseManager.sendMainMenu(senderID);
                 break;

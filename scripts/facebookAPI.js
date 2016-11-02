@@ -6,6 +6,7 @@ const PAGE_ACCESS_TOKEN = config.get('pageAccessToken');
 
 module.exports = {
     sendTextMessage: function(recipientId, messageText) {
+        this.sendTypingOn(recipientId);
         var messageData = {
             recipient: {
                 id: recipientId
@@ -15,8 +16,10 @@ module.exports = {
             }
         };
         this.callSendAPI(messageData);
+        this.sendTypingOff(recipientId);
     },
     sendImageMessage: function(recipientId, imageURL) {
+        this.sendTypingOn(recipientId);
         var messageData = {
             recipient: {
                 id: recipientId
@@ -31,6 +34,7 @@ module.exports = {
             }
         };
         this.callSendAPI(messageData);
+        this.sendTypingOff(recipientId);
     },
     sendGenericMessage: function(recipientId, attachmentMessage) {
         var messageData = {
