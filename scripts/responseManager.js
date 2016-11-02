@@ -57,7 +57,7 @@ module.exports = {
         facebookAPI.sendImageMessage(recipientId, url);
         facebookAPI.sendTypingOff(recipientId);
         setTimeout(function() { 
-            this.setBackButtonRequired(recipientId); 
+            this.sendBackButton(recipientId); 
         }, 3000);
     },
     sendBackButton: function(recipientId) {
