@@ -42,7 +42,7 @@ module.exports = {
                 responseManager.sendPhoto(senderID);
                 break;
             case 'volver':
-                responseManager.sendBackButton(senderID);
+                responseManager.sendMainMenu(senderID);
                 break;
             default:
                 break;
