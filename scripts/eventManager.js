@@ -20,7 +20,7 @@ module.exports = {
             console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload);
             this.quickReplyManager(senderID, quickReplyPayload);
         } else if (messageText || messageAttachments) {
-            responseManager.sendMainMenu(senderID);
+            this.messageManager(senderID, messageText);
         }
     },
     receivedPostback: function(event) {
@@ -30,6 +30,19 @@ module.exports = {
         var payload = event.postback.payload;
         console.log("Received postback for user %d and page %d with payload '%s' " + "at %d", senderID, recipientID, payload, timeOfPostback);
         this.payloadManager(senderID, payload);
+    },
+    messageManager: function(senderID, message) {
+        switch (message) {
+            case 'foto':
+                responseManager.sendPhoto(senderID);
+                break;
+            case 'cancion':
+                responseManager.sendSong(senderID);
+                break;
+            default:
+                responseManager.sendMainMenu(senderID);
+                break;
+        }
     },
     payloadManager: function(senderID, payload) {
         switch (payload) {
