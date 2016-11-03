@@ -33,8 +33,7 @@ module.exports = {
     },
     sendSong: function(recipientId) {
         var song = music[Math.floor(Math.random() * music.length)];
-        var url = SERVER_URL + '/pics/' + song.url;
-        facebookAPI.sendTextMessage(recipientId, url);
+        facebookAPI.sendTextMessage(recipientId, song.url);
         // setTimeout(function() { 
         //     this.sendBackButton(recipientId); 
         // }.bind(this), 3000);
