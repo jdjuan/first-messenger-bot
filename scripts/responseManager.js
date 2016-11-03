@@ -19,8 +19,8 @@ module.exports = {
                         payload: "ver-fotos",
                     }, {
                         type: "postback",
-                        url: "Recomiendame una canción",
-                        title: "recomendar-cancion"
+                        title: "Recomiéndame una canción",
+                        payload: "recomendar-cancion",
                     }, {
                         type: "web_url",
                         url: "http://www.juandavidherrera.com/",
