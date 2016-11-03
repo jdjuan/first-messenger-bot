@@ -19,7 +19,7 @@ module.exports = {
                         payload: "ver-fotos",
                     }, {
                         type: "postback",
-                        title: "Recomiéndame una canción",
+                        title: "Recomendar canción",
                         payload: "recomendar-cancion",
                     }, {
                         type: "web_url",
@@ -34,9 +34,24 @@ module.exports = {
     sendSong: function(recipientId) {
         var song = music[Math.floor(Math.random() * music.length)];
         facebookAPI.sendTextMessage(recipientId, song.url);
-        // setTimeout(function() { 
-        //     this.sendBackButton(recipientId); 
-        // }.bind(this), 3000);
+        setTimeout(function() {
+            this.sendSongMenu(recipientId);
+        }.bind(this), 2000);
+    },
+    sendSongMenu: function(recipientId) {
+        var textMessage = "¿Te gustó?"
+        var quickReplies = [{
+            "content_type": "text",
+            "title": "Sí",
+            "payload": "me-gusto",
+            "image_url": "https://www.facebook.com/images/emoji.php/v5/zb6/1/32/1f44d.png"
+        }, {
+            "content_type": "text",
+            "title": "No",
+            "payload": "no-me-gusto",
+            "image_url": "https://www.facebook.com/images/emoji.php/v5/z37/1/32/1f44e.png"
+        }];
+        facebookAPI.sendQuickReply(recipientId, textMessage, quickReplies);
     },
     sendPhoto: function(recipientId) {
         var photo = photos[Math.floor(Math.random() * photos.length)];
@@ -44,11 +59,11 @@ module.exports = {
         var message = photo.message;
         facebookAPI.sendTextMessage(recipientId, message);
         facebookAPI.sendImageMessage(recipientId, url);
-        setTimeout(function() { 
-            this.sendBackButton(recipientId); 
+        setTimeout(function() {
+            this.sendPhotoMenu(recipientId);
         }.bind(this), 3000);
     },
-    sendBackButton: function(recipientId) {
+    sendPhotoMenu: function(recipientId) {
         var attachmentMessage = {
             type: "template",
             payload: {
@@ -58,6 +73,32 @@ module.exports = {
                     type: "postback",
                     title: "Ver otra foto",
                     payload: "ver-otra-foto"
+                }, {
+                    type: "postback",
+                    title: "Volver",
+                    payload: "volver"
+                }]
+            }
+        };
+        facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
+    },
+    sendSongFeedback: function(recipientId, liked) {
+        var messageText = liked ? "Qué bien :)" : "Lo siento :(";
+        facebookAPI.sendTextMessage(recipientId, messageText);
+        setTimeout(function() {
+            this.sendFeedbackMenu(recipientId);
+        }.bind(this), 3000);
+    },
+    sendFeedbackMenu: function(recipientId) {
+        var attachmentMessage = {
+            type: "template",
+            payload: {
+                template_type: "button",
+                text: "Escoge una opción:",
+                buttons: [{
+                    type: "postback",
+                    title: "Recomendar otra",
+                    payload: "recomendar-otra"
                 }, {
                     type: "postback",
                     title: "Volver",

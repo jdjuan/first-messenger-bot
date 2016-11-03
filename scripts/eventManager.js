@@ -18,11 +18,8 @@ module.exports = {
         if (quickReply) {
             var quickReplyPayload = quickReply.payload;
             console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload);
-            responseManager.sendTextMessage(senderID, "Quick reply tapped");
-            return;
-        }
-
-        if (messageText || messageAttachments) {
+            this.quickReplyManager(senderID, quickReplyPayload);
+        } else if (messageText || messageAttachments) {
             responseManager.sendMainMenu(senderID);
         }
     },
@@ -32,8 +29,6 @@ module.exports = {
         var timeOfPostback = event.timestamp;
         var payload = event.postback.payload;
         console.log("Received postback for user %d and page %d with payload '%s' " + "at %d", senderID, recipientID, payload, timeOfPostback);
-        // The 'payload' param is a developer-defined field which is set in a postback 
-        // button for Structured Messages. 
         this.payloadManager(senderID, payload);
     },
     payloadManager: function(senderID, payload) {
@@ -47,8 +42,23 @@ module.exports = {
             case 'recomendar-cancion':
                 responseManager.sendSong(senderID);
                 break;
+            case 'recomendar-otra':
+                responseManager.sendSong(senderID);
+                break;
             case 'volver':
                 responseManager.sendMainMenu(senderID);
+                break;
+            default:
+                break;
+        }
+    },
+    quickReplyManager: function(senderID, payload) {
+        switch (payload) {
+            case 'me-gusto':
+                responseManager.sendSongFeedback(senderID, true);
+                break;
+            case 'no-me-gusto':
+                responseManager.sendSongFeedback(senderID, false);
                 break;
             default:
                 break;
