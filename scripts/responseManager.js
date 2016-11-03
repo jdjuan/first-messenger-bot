@@ -18,6 +18,10 @@ module.exports = {
                         title: "Ver una foto",
                         payload: "ver-fotos",
                     }, {
+                        type: "postback",
+                        url: "Recomiendame una canción",
+                        title: "recomendar-cancion"
+                    }, {
                         type: "web_url",
                         url: "http://www.juandavidherrera.com/",
                         title: "Ver página web"
@@ -59,7 +63,7 @@ module.exports = {
                     type: "postback",
                     title: "Volver",
                     payload: "volver"
-                },]
+                }]
             }
         };
         facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
