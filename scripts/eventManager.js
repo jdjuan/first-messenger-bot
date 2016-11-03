@@ -37,6 +37,7 @@ module.exports = {
                 responseManager.sendPhoto(senderID);
                 break;
             case 'cancion':
+            case 'canción':
                 responseManager.sendSong(senderID);
                 break;
             default:
@@ -47,14 +48,10 @@ module.exports = {
     payloadManager: function(senderID, payload) {
         switch (payload) {
             case 'ver-fotos':
-                responseManager.sendPhoto(senderID);
-                break;
             case 'ver-otra-foto':
                 responseManager.sendPhoto(senderID);
                 break;
             case 'recomendar-cancion':
-                responseManager.sendSong(senderID);
-                break;
             case 'recomendar-otra':
                 responseManager.sendSong(senderID);
                 break;
