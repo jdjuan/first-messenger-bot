@@ -56,7 +56,7 @@ module.exports = {
         facebookAPI.sendQuickReply(recipientId, textMessage, quickReplies);
     },
     sendSongFeedback: function (recipientId, liked) {
-        var messageText = liked ? "Qué bien 😊 🌝 😸 👏 😎" : "Lo siento 💔 😭 😰 🙀 😳";
+        var messageText = liked ? "Qué bien 😊 😸 😎 👏" : "Lo siento 💔 😭 😰 🙀 😳";
         facebookAPI.sendTextMessage(recipientId, messageText, function () {
             setTimeout(function () {
                 this.sendFeedbackMenu(recipientId);
