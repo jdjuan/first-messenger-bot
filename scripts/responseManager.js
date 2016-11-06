@@ -11,14 +11,14 @@ module.exports = {
             payload: {
                 template_type: "generic",
                 elements: [{
-                    title: "¡Hola!, escoge una opción: ☝",
+                    title: "¡Hola!, escoge una opción: ✅",
                     buttons: [{
                         type: "postback",
-                        title: "Ver foto 📷",
+                        title: "Ver foto",
                         payload: "ver-fotos",
                     }, {
                         type: "postback",
-                        title: "Recomendar canción 🎶",
+                        title: "Recomendar canción",
                         payload: "recomendar-cancion",
                     }, {
                         type: "web_url",
@@ -32,7 +32,7 @@ module.exports = {
     },
     sendSong: function (recipientId) {
         var song = music[Math.floor(Math.random() * music.length)];
-        facebookAPI.sendTextMessage(recipientId, "🎶 " + song.name + " 🎶", function () {
+        facebookAPI.sendTextMessage(recipientId, "🎵 " + song.name + " 🎵", function () {
             setTimeout(function () {
                 facebookAPI.sendTextMessage(recipientId, "Youtube: " + song.url, function () {
                     setTimeout(function () {
@@ -43,22 +43,21 @@ module.exports = {
         }.bind(this));
     },
     sendSongMenu: function (recipientId) {
-        var textMessage = "¿Te gustó?"
+        var textMessage = "¿Te gustó? "
         var quickReplies = [{
             "content_type": "text",
-            "title": "Sí",
-            "payload": "me-gusto",
-            "image_url": "https://www.facebook.com/images/emoji.php/v5/zb6/1/32/1f44d.png"
+            "title": "Sí 😍",
+            "payload": "me-gusto"
         }, {
             "content_type": "text",
-            "title": "No",
+            "title": "No 💩",
             "payload": "no-me-gusto",
             "image_url": "https://www.facebook.com/images/emoji.php/v5/z37/1/32/1f44e.png"
         }];
         facebookAPI.sendQuickReply(recipientId, textMessage, quickReplies);
     },
     sendSongFeedback: function (recipientId, liked) {
-        var messageText = liked ? "Qué bien 😊 😊 😊" : "Lo siento 😭 😭 😭";
+        var messageText = liked ? "Qué bien 😊 😊 😊 😸 😸 😸" : "Lo siento 😭 😭 😭 💔 💔 💔";
         facebookAPI.sendTextMessage(recipientId, messageText, function () {
             setTimeout(function () {
                 this.sendFeedbackMenu(recipientId);
@@ -69,7 +68,7 @@ module.exports = {
         var photo = photos[Math.floor(Math.random() * photos.length)];
         var url = SERVER_URL + '/pics/' + photo.url;
         var message = photo.message;
-        facebookAPI.sendTextMessage(recipientId, message, function () {
+        facebookAPI.sendTextMessage(recipientId, message + "👶👶👶", function () {
             setTimeout(function () {
                 facebookAPI.sendImageMessage(recipientId, url, function () {
                     setTimeout(function () {
@@ -87,11 +86,11 @@ module.exports = {
                 text: "Escoge una opción:",
                 buttons: [{
                     type: "postback",
-                    title: "Ver otra foto",
+                    title: "Ver otra foto 👌",
                     payload: "ver-otra-foto"
                 }, {
                     type: "postback",
-                    title: "Volver",
+                    title: "Volver 👈",
                     payload: "volver"
                 }]
             }
