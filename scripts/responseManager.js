@@ -11,19 +11,19 @@ module.exports = {
             payload: {
                 template_type: "generic",
                 elements: [{
-                    title: "¡Hola!, escoge una opción: ✅",
+                    title: "Hola 🙌😀😺 Escoge una opción: ",
                     buttons: [{
                         type: "postback",
-                        title: "Ver foto",
+                        title: "📷 Ver foto",
                         payload: "ver-fotos",
                     }, {
                         type: "postback",
-                        title: "Recomendar canción",
+                        title: "🎧 Recomendar canción",
                         payload: "recomendar-cancion",
                     }, {
                         type: "web_url",
                         url: "http://www.juandavidherrera.com/",
-                        title: "Ver página web"
+                        title: "💻 Ver página web"
                     }],
                 }]
             }
@@ -43,21 +43,20 @@ module.exports = {
         }.bind(this));
     },
     sendSongMenu: function (recipientId) {
-        var textMessage = "¿Te gustó? "
+        var textMessage = "¿Te gustó? 🙏🙈✨"
         var quickReplies = [{
             "content_type": "text",
-            "title": "Sí 😍",
+            "title": "Sí 😍😍😍",
             "payload": "me-gusto"
         }, {
             "content_type": "text",
-            "title": "No 💩",
-            "payload": "no-me-gusto",
-            "image_url": "https://www.facebook.com/images/emoji.php/v5/z37/1/32/1f44e.png"
+            "title": "No 💩💩💩",
+            "payload": "no-me-gusto"
         }];
         facebookAPI.sendQuickReply(recipientId, textMessage, quickReplies);
     },
     sendSongFeedback: function (recipientId, liked) {
-        var messageText = liked ? "Qué bien 😊 😊 😊 😸 😸 😸" : "Lo siento 😭 😭 😭 💔 💔 💔";
+        var messageText = liked ? "Qué bien 😊 🌝 😸 👏 😎" : "Lo siento 💔 😭 😰 🙀 😳";
         facebookAPI.sendTextMessage(recipientId, messageText, function () {
             setTimeout(function () {
                 this.sendFeedbackMenu(recipientId);
@@ -86,7 +85,7 @@ module.exports = {
                 text: "Escoge una opción:",
                 buttons: [{
                     type: "postback",
-                    title: "Ver otra foto 👌",
+                    title: "Ver otra foto 👌 😏",
                     payload: "ver-otra-foto"
                 }, {
                     type: "postback",
