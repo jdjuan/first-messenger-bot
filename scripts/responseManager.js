@@ -33,9 +33,13 @@ module.exports = {
     sendSong: function (recipientId) {
         var song = music[Math.floor(Math.random() * music.length)];
         facebookAPI.sendTextMessage(recipientId, song.name, function () {
-            facebookAPI.sendTextMessage(recipientId, song.url, function () {
-                this.sendSongMenu(recipientId);
-            }.bind(this));
+            setTimeout(function () {
+                facebookAPI.sendTextMessage(recipientId, "Youtube: " + song.url, function () {
+                    setTimeout(function () {
+                        this.sendSongMenu(recipientId);
+                    }.bind(this), 2000);
+                }.bind(this));
+            }.bind(this), 1000);
         }.bind(this));
     },
     sendSongMenu: function (recipientId) {
@@ -55,20 +59,25 @@ module.exports = {
     },
     sendSongFeedback: function (recipientId, liked) {
         var messageText = liked ? "Qué bien :)" : "Lo siento :(";
-        facebookAPI.sendTextMessage(recipientId, messageText);
-        setTimeout(function () {
-            this.sendFeedbackMenu(recipientId);
-        }.bind(this), 1000);
+        facebookAPI.sendTextMessage(recipientId, messageText, function () {
+            setTimeout(function () {
+                this.sendFeedbackMenu(recipientId);
+            }.bind(this), 1000);
+        }.bind(this));
     },
     sendPhoto: function (recipientId) {
         var photo = photos[Math.floor(Math.random() * photos.length)];
         var url = SERVER_URL + '/pics/' + photo.url;
         var message = photo.message;
-        facebookAPI.sendTextMessage(recipientId, message);
-        facebookAPI.sendImageMessage(recipientId, url);
-        setTimeout(function () {
-            this.sendPhotoMenu(recipientId);
-        }.bind(this), 2000);
+        facebookAPI.sendTextMessage(recipientId, message, function () {
+            setTimeout(function () {
+                facebookAPI.sendImageMessage(recipientId, url, function () {
+                    setTimeout(function () {
+                        this.sendPhotoMenu(recipientId);
+                    }.bind(this), 1000);
+                }.bind(this));
+            }.bind(this), 1000);
+        });
     },
     sendPhotoMenu: function (recipientId) {
         var attachmentMessage = {
