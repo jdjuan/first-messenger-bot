@@ -5,7 +5,7 @@ var music = require('../config/music.json');
 const SERVER_URL = config.get('serverURL');
 
 module.exports = {
-    sendMainMenu: function(recipientId) {
+    sendMainMenu: function (recipientId) {
         var attachmentMessage = {
             type: "template",
             payload: {
@@ -30,14 +30,15 @@ module.exports = {
         };
         facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
     },
-    sendSong: function(recipientId) {
+    sendSong: function (recipientId) {
         var song = music[Math.floor(Math.random() * music.length)];
-        facebookAPI.sendTextMessage(recipientId, song.url);
-        setTimeout(function() {
-            this.sendSongMenu(recipientId);
-        }.bind(this), 2000);
+        facebookAPI.sendTextMessage(recipientId, song.name, function () {
+            facebookAPI.sendTextMessage(recipientId, song.url, function () {
+                this.sendSongMenu(recipientId);
+            }.bind(this));
+        }.bind(this));
     },
-    sendSongMenu: function(recipientId) {
+    sendSongMenu: function (recipientId) {
         var textMessage = "¿Te gustó?"
         var quickReplies = [{
             "content_type": "text",
@@ -52,24 +53,24 @@ module.exports = {
         }];
         facebookAPI.sendQuickReply(recipientId, textMessage, quickReplies);
     },
-    sendSongFeedback: function(recipientId, liked) {
+    sendSongFeedback: function (recipientId, liked) {
         var messageText = liked ? "Qué bien :)" : "Lo siento :(";
         facebookAPI.sendTextMessage(recipientId, messageText);
-        setTimeout(function() {
+        setTimeout(function () {
             this.sendFeedbackMenu(recipientId);
         }.bind(this), 1000);
     },
-    sendPhoto: function(recipientId) {
+    sendPhoto: function (recipientId) {
         var photo = photos[Math.floor(Math.random() * photos.length)];
         var url = SERVER_URL + '/pics/' + photo.url;
         var message = photo.message;
         facebookAPI.sendTextMessage(recipientId, message);
         facebookAPI.sendImageMessage(recipientId, url);
-        setTimeout(function() {
+        setTimeout(function () {
             this.sendPhotoMenu(recipientId);
         }.bind(this), 2000);
     },
-    sendPhotoMenu: function(recipientId) {
+    sendPhotoMenu: function (recipientId) {
         var attachmentMessage = {
             type: "template",
             payload: {
@@ -88,7 +89,7 @@ module.exports = {
         };
         facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
     },
-    sendFeedbackMenu: function(recipientId) {
+    sendFeedbackMenu: function (recipientId) {
         var attachmentMessage = {
             type: "template",
             payload: {

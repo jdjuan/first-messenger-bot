@@ -1,13 +1,14 @@
 [
-    { "url": "https://www.youtube.com/watch?v=u8XFFTWwSvY" },
-    { "url": "https://www.youtube.com/watch?v=Bw_7UrqzNUg" },
-    { "url": "https://www.youtube.com/watch?v=psiteLjbqk4" },
-    { "url": "https://www.youtube.com/watch?v=jPRHsZADS_4" },
-    { "url": "https://www.youtube.com/watch?v=5JAP9C-fgY4" },
-    { "url": "https://www.youtube.com/watch?v=TP9luRtEqjc" },
-    { "url": "https://www.youtube.com/watch?v=TP9luRtEqjc" },
-    { "url": "https://www.youtube.com/watch?v=hwlesWn38RI" },
-    { "url": "https://www.youtube.com/watch?v=M8XmoroZ3zo" },
-    { "url": "https://www.youtube.com/watch?v=gmX-ceF-N1k" },
-    { "url": "https://www.youtube.com/watch?v=0sErSC7ok48" }
+    { "name": "Coldplay - Shiver", "url": "https://www.youtube.com/watch?v=u8XFFTWwSvY" },
+    { "name": "Skylar Spence - Fiona Coyne", "url": "https://www.youtube.com/watch?v=Bw_7UrqzNUg" },
+    { "name": "Yacht - Psychic City (Classixx Remix)", "url": "https://www.youtube.com/watch?v=psiteLjbqk4" },
+    { "name": "Misun - Superstitions", "url": "https://www.youtube.com/watch?v=jPRHsZADS_4" },
+    { "name": "Olympic Ayres - Control", "url": "https://www.youtube.com/watch?v=5JAP9C-fgY4" },
+    { "name": "Coldplay - Shiver", "url": "https://www.youtube.com/watch?v=TP9luRtEqjc" },
+    { "name": "Jamie xx - Loud Places (ft Romy)", "url": "https://www.youtube.com/watch?v=TP9luRtEqjc" },
+    { "name": "Goodnight Radio - Sophia So Far", "url": "https://www.youtube.com/watch?v=hwlesWn38RI" },
+    { "name": "The Preatures - Is This How You Feel?", "url": "https://www.youtube.com/watch?v=M8XmoroZ3zo" },
+    { "name": "Heartless Bastards - Only For You", "url": "https://www.youtube.com/watch?v=gmX-ceF-N1k" },
+    { "name": "Moi Je - Respire", "url": "https://www.youtube.com/watch?v=0sErSC7ok48" },
+    { "name": "Ricardo Pita - Canción para el resto de los dias", "url": "https://www.youtube.com/watch?v=sSCZHZbQkLo" }
 ]

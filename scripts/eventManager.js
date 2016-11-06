@@ -37,6 +37,7 @@ module.exports = {
         message = message.toLowerCase();
         switch (message) {
             case 'foto':
+            case 'ver una foto':
             case 'ver fotos':
             case 'ver otra foto':
                 responseManager.sendPhoto(senderID);
