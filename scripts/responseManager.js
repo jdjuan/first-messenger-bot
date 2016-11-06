@@ -11,14 +11,14 @@ module.exports = {
             payload: {
                 template_type: "generic",
                 elements: [{
-                    title: "¡Hola!, escoge una opción:",
+                    title: "¡Hola!, escoge una opción: ☝",
                     buttons: [{
                         type: "postback",
-                        title: "Ver foto",
+                        title: "Ver foto 📷",
                         payload: "ver-fotos",
                     }, {
                         type: "postback",
-                        title: "Recomendar canción",
+                        title: "Recomendar canción 🎶",
                         payload: "recomendar-cancion",
                     }, {
                         type: "web_url",
@@ -32,7 +32,7 @@ module.exports = {
     },
     sendSong: function (recipientId) {
         var song = music[Math.floor(Math.random() * music.length)];
-        facebookAPI.sendTextMessage(recipientId, song.name, function () {
+        facebookAPI.sendTextMessage(recipientId, "🎶 " + song.name + " 🎶", function () {
             setTimeout(function () {
                 facebookAPI.sendTextMessage(recipientId, "Youtube: " + song.url, function () {
                     setTimeout(function () {
@@ -58,7 +58,7 @@ module.exports = {
         facebookAPI.sendQuickReply(recipientId, textMessage, quickReplies);
     },
     sendSongFeedback: function (recipientId, liked) {
-        var messageText = liked ? "Qué bien :)" : "Lo siento :(";
+        var messageText = liked ? "Qué bien 😊 😊 😊" : "Lo siento 😭 😭 😭";
         facebookAPI.sendTextMessage(recipientId, messageText, function () {
             setTimeout(function () {
                 this.sendFeedbackMenu(recipientId);
