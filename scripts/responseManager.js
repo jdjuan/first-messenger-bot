@@ -11,7 +11,7 @@ module.exports = {
             payload: {
                 template_type: "generic",
                 elements: [{
-                    title: "Hola 🙌😀😺 Escoge una opción: ",
+                    title: "¡Hola!, escoge una opción: ",
                     buttons: [{
                         type: "postback",
                         title: "📷 Ver foto",
@@ -34,7 +34,7 @@ module.exports = {
         var song = music[Math.floor(Math.random() * music.length)];
         facebookAPI.sendTextMessage(recipientId, "🎵 " + song.name + " 🎵", function () {
             setTimeout(function () {
-                facebookAPI.sendTextMessage(recipientId, "Youtube: " + song.url, function () {
+                facebookAPI.sendTextMessage(recipientId, "🎷 Youtube: " + song.url + " 🎷", function () {
                     setTimeout(function () {
                         this.sendSongMenu(recipientId);
                     }.bind(this), 2000);
@@ -43,7 +43,7 @@ module.exports = {
         }.bind(this));
     },
     sendSongMenu: function (recipientId) {
-        var textMessage = "¿Te gustó? 🙏🙈✨"
+        var textMessage = "¿Te gustó? 🙈🙈🙈"
         var quickReplies = [{
             "content_type": "text",
             "title": "Sí 😍😍😍",
@@ -85,7 +85,7 @@ module.exports = {
                 text: "Escoge una opción:",
                 buttons: [{
                     type: "postback",
-                    title: "Ver otra foto 👌 😏",
+                    title: "Ver otra foto 😂",
                     payload: "ver-otra-foto"
                 }, {
                     type: "postback",
