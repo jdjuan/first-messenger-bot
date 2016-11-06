@@ -1,5 +1,6 @@
 var facebookAPI = require('./facebookAPI');
 var responseManager = require('./responseManager');
+var removeDiacritics = require('diacritics').remove;
 
 module.exports = {
     receivedMessage: function(event) {
@@ -32,12 +33,17 @@ module.exports = {
         this.payloadManager(senderID, payload);
     },
     messageManager: function(senderID, message) {
+        message = removeDiacritics(message);
+        message = message.toLowerCase();
         switch (message) {
             case 'foto':
+            case 'ver fotos':
+            case 'ver otra foto':
                 responseManager.sendPhoto(senderID);
                 break;
             case 'cancion':
-            case 'canción':
+            case 'recomendar cancion':
+            case 'recomendar otra':
                 responseManager.sendSong(senderID);
                 break;
             default:

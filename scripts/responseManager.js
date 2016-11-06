@@ -2,7 +2,6 @@ var facebookAPI = require('./facebookAPI');
 var config = require('config');
 var photos = require('../config/photos.json');
 var music = require('../config/music.json');
-
 const SERVER_URL = config.get('serverURL');
 
 module.exports = {
@@ -53,6 +52,13 @@ module.exports = {
         }];
         facebookAPI.sendQuickReply(recipientId, textMessage, quickReplies);
     },
+    sendSongFeedback: function(recipientId, liked) {
+        var messageText = liked ? "Qué bien :)" : "Lo siento :(";
+        facebookAPI.sendTextMessage(recipientId, messageText);
+        setTimeout(function() {
+            this.sendFeedbackMenu(recipientId);
+        }.bind(this), 1000);
+    },
     sendPhoto: function(recipientId) {
         var photo = photos[Math.floor(Math.random() * photos.length)];
         var url = SERVER_URL + '/pics/' + photo.url;
@@ -61,7 +67,7 @@ module.exports = {
         facebookAPI.sendImageMessage(recipientId, url);
         setTimeout(function() {
             this.sendPhotoMenu(recipientId);
-        }.bind(this), 3000);
+        }.bind(this), 2000);
     },
     sendPhotoMenu: function(recipientId) {
         var attachmentMessage = {
@@ -81,13 +87,6 @@ module.exports = {
             }
         };
         facebookAPI.sendGenericMessage(recipientId, attachmentMessage);
-    },
-    sendSongFeedback: function(recipientId, liked) {
-        var messageText = liked ? "Qué bien :)" : "Lo siento :(";
-        facebookAPI.sendTextMessage(recipientId, messageText);
-        setTimeout(function() {
-            this.sendFeedbackMenu(recipientId);
-        }.bind(this), 3000);
     },
     sendFeedbackMenu: function(recipientId) {
         var attachmentMessage = {
