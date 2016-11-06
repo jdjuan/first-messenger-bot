@@ -14,7 +14,7 @@ module.exports = {
                     title: "¡Hola!, escoge una opción:",
                     buttons: [{
                         type: "postback",
-                        title: "Ver una foto",
+                        title: "Ver foto",
                         payload: "ver-fotos",
                     }, {
                         type: "postback",
@@ -77,7 +77,7 @@ module.exports = {
                     }.bind(this), 1000);
                 }.bind(this));
             }.bind(this), 1000);
-        });
+        }.bind(this));
     },
     sendPhotoMenu: function (recipientId) {
         var attachmentMessage = {
